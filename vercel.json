@@ -1,0 +1,52 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "builds": [
+    {
+      "src": "@(index|account|painel_admin).html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.jpg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.png",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "assets/@(app|account|dashboard).js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/dispatch.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "assets/twemoji/*.svg",
+      "use": "@vercel/static"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/account",
+      "destination": "/account.html"
+    },
+    {
+      "source": "/painel_admin",
+      "destination": "/painel_admin.html"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "/api/dispatch.js?__path=/api/:path*"
+    },
+    {
+      "source": "/auth/:path*",
+      "destination": "/api/dispatch.js?__path=/auth/:path*"
+    }
+  ]
+}

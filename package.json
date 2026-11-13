@@ -1,0 +1,18 @@
+{
+  "name": "pequenos-brincantes-pdf-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Loja Pequenos Brincantes com biblioteca de PDFs, painel administrativo e checkout Stripe",
+  "scripts": {
+    "start": "node server.cjs",
+    "check": "node --check server.cjs && node --check cloud-store.cjs && node --check drive-import.cjs && node --check assets/app.js && node --check assets/account.js && node --check assets/dashboard.js",
+    "test": "node test.cjs && node --test cloud-store.test.cjs drive-import.test.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.13",
+    "pdfjs-dist": "^6.4.299"
+  }
+}
